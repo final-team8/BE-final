@@ -1,8 +1,10 @@
 package com.fastcampus.befinal.presentation.controller;
 
 import com.fastcampus.befinal.application.facade.AuthFacade;
+import com.fastcampus.befinal.common.annotation.SwaggerErrorCodeExamples;
 import com.fastcampus.befinal.common.response.AppApiResponse;
 import com.fastcampus.befinal.common.response.ResponseEntityFactory;
+import com.fastcampus.befinal.common.response.error.info.JwtErrorCode;
 import com.fastcampus.befinal.presentation.dto.AuthDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -45,6 +47,7 @@ public class AuthController {
                 )
             )
     )
+    @SwaggerErrorCodeExamples({JwtErrorCode.EXPIRED_JWT, JwtErrorCode.ILLEGAL_JWT})
     public ResponseEntity<AppApiResponse<AuthDto.ReissueJwtResponse>> reissueAccessToken(
         @RequestBody
         @Validated
